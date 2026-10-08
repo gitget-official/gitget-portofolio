@@ -1,0 +1,22 @@
+{
+  "name": "gitget-portfolio",
+  "private": true,
+  "type": "module",
+  "description": "gitget portfolio, staticna stranica bez build koraka",
+  "scripts": {
+    "serve": "http-server public -p 8080 -c-1 -s",
+    "images": "node tools/make-images.mjs",
+    "og": "node tools/make-og.mjs",
+    "test": "playwright test",
+    "perf": "node tools/perf.mjs",
+    "gif": "node tools/make-gif.mjs"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@fontsource-variable/manrope": "5.3.0",
+    "@playwright/test": "1.56.1",
+    "http-server": "14.1.1",
+    "lighthouse": "13.5.0",
+    "sharp": "0.35.5"
+  }
+}
