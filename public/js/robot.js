@@ -39,7 +39,8 @@
       menuProjects: 'Show projects',
       menuServices: 'Services',
       menuContact: 'Contact us',
-      label: 'gitget robot guide, open quick menu'
+      label: 'gitget robot guide, open quick menu',
+      region: 'Robot guide'
     },
     bs: {
       hero: 'Zdravo! Ja sam gitget robotić. Skrolaj, provešću te.',
@@ -58,7 +59,8 @@
       menuProjects: 'Pokaži projekte',
       menuServices: 'Usluge',
       menuContact: 'Kontaktiraj nas',
-      label: 'gitget robotić vodič, otvori brzi meni'
+      label: 'gitget robotić vodič, otvori brzi meni',
+      region: 'Robotić vodič'
     }
   };
   function L(key) {
@@ -135,9 +137,13 @@
   menu.setAttribute('role', 'menu');
   menu.setAttribute('aria-labelledby', 'bot-menu-title');
 
-  document.body.appendChild(bubble);
-  document.body.appendChild(bot);
-  document.body.appendChild(menu);
+  /* sve robotićevo je u jednom orijentiru, da čitači ekrana znaju šta je */
+  var layer = document.createElement('aside');
+  layer.className = 'bot-layer';
+  layer.appendChild(bubble);
+  layer.appendChild(bot);
+  layer.appendChild(menu);
+  document.body.appendChild(layer);
 
   var $ = function (id) { return bot.querySelector('#' + id); };
   var parts = {
@@ -168,6 +174,7 @@
       menu.appendChild(b);
     });
     bot.setAttribute('aria-label', L('label'));
+    layer.setAttribute('aria-label', L('region'));
   }
   buildMenu();
 
@@ -228,7 +235,7 @@
       activeSection = act;
       pendingSpeak = true;
       settledFor = 0;
-      doc.setAttribute('data-bot-section', act.getAttribute('data-bot-section'));
+      doc.setAttribute('data-bot-active', act.getAttribute('data-bot-section'));
     }
 
     var sr = stage ? stage.getBoundingClientRect() : null;
@@ -658,7 +665,7 @@
   /* stanje za testove */
   window.gitgetBot = {
     state: function () {
-      return { mode: mode, where: target.where, x: pos.x, y: pos.y, s: pos.s, walking: walking, reduced: reduced, menuOpen: menuOpen, section: activeSection && activeSection.getAttribute('data-bot-section') };
+      return { mode: mode, where: target.where, x: pos.x, y: pos.y, s: pos.s, tx: target.x, ty: target.y, ts: target.s, walking: walking, reduced: reduced, menuOpen: menuOpen, section: activeSection && activeSection.getAttribute('data-bot-section') };
     },
     rect: function () { return bot.getBoundingClientRect(); }
   };
