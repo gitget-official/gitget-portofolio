@@ -213,7 +213,7 @@ html.no-js .nav { position: static; transform: none; opacity: 1; visibility: vis
 @keyframes tw { 0%, 100% { transform: scale(.4); opacity: .2; } 50% { transform: scale(1); opacity: 1; } }
 
 .hero-inner { position: relative; display: grid; gap: 24px; align-items: center; }
-@media (min-width: 900px) { .hero-inner { grid-template-columns: 1.15fr .85fr; } }
+@media (min-width: 700px) { .hero-inner { grid-template-columns: 1.15fr .85fr; } }
 .eyebrow {
   display: inline-flex; align-items: center; gap: 10px;
   padding: 6px 14px; border-radius: 999px; font-size: 14px; font-weight: 600; color: var(--purple-2);
@@ -256,7 +256,7 @@ html.no-js .nav { position: static; transform: none; opacity: 1; visibility: vis
   animation: spin 40s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
-@media (max-width: 899px) { .hero-stage { display: none; } }
+@media (max-width: 699px) { .hero-stage { display: none; } }
 
 /* ---------- Sekcije ---------- */
 .section { position: relative; padding: clamp(84px, 11vw, 150px) 0; }

@@ -248,7 +248,7 @@
       target.s = s;
       target.x = sr.left + sr.width / 2;
       target.y = sr.top + sr.height / 2 + (BODY_H * s) / 2;
-      facingTarget = mode === 'lanes' || vw >= 900 ? -1 : 1;
+      facingTarget = -1;
       return;
     }
 
